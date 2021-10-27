@@ -11,6 +11,9 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 
+const connection = require("./config/database.config");
+connection.database();
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
