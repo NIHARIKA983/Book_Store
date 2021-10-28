@@ -1,0 +1,23 @@
+{
+    "user": {
+        "registration": {
+            "firstName": "Drakshayani",
+            "lastName": "OI",
+            "email": "drakshayani12@gmail.com",
+            "password": "drakshayani12$&",
+            "role": "user"
+        },
+        "adminRegistration": {
+            "firstName": "Sumithra",
+            "lastName": "KM",
+            "email": "sumithra12@gmail.com",
+            "password": "sumithra12$&",
+            "role": "admin"
+        },
+        "registrationWithImproperDetails": {
+            "firstName": "Niharika",
+            "email": "niharika123@gmail.com",
+            "password": "niharika123#"
+        }
+    }
+}

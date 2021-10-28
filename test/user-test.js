@@ -1,0 +1,72 @@
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const server = require('../server');
+const faker = require('faker');
+
+chai.use(chaiHttp);
+const registrationData = require('./user.json');
+
+chai.should();
+
+describe('user registartion', () => {
+  it('givenRegistrationDetails_whenProper_shouldSaveInDB', (done) => {
+    const registerfaker = {
+        firstName: faker.name.findName(),
+        lastName: faker.name.lastName(),
+        email: faker.internet.email(),
+        password: faker.internet.password(),
+        role:"user"
+      };
+    chai
+      .request(server)
+      .post('/userRegistration')
+      .send(registerfaker)
+      .end((err, res) => {
+          if(err){
+              return done(err);
+          }
+        res.should.have.status(200);
+        done();
+      });
+  });
+  it('givenRegistrationDetails_whenImpProper_shouldNotSaveInDB', (done) => {
+    chai
+      .request(server)
+      .post('/userRegistration')
+      .send(registrationData.user.registrationWithImproperDetails)
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+  });
+});
+
+describe('admin registartion', () => {
+    it('givenRegistrationDetails_whenProper_shouldSaveInDB', (done) => {
+        const registerfaker = {
+            firstName: faker.name.findName(),
+            lastName: faker.name.lastName(),
+            email: faker.internet.email(),
+            password: faker.internet.password(),
+            role:"admin"
+          };
+      chai
+        .request(server)
+        .post('/adminRegistration')
+        .send(registerfaker)
+        .end((err, res) => {
+          res.should.have.status(200);
+          done();
+        });
+    });
+    it('givenRegistrationDetails_whenImpProper_shouldNotSaveInDB', (done) => {
+      chai
+        .request(server)
+        .post('/adminRegistration')
+        .send(registrationData.user.registrationWithImproperDetails)
+        .end((err, res) => {
+          res.should.have.status(400);
+          done();
+        });
+    });
+});
