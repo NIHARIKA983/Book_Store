@@ -1,0 +1,137 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "BookStoreApp",
+        "description": "This app is created for selling or buying books",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/adminRegistration": {
+            "post": {
+                "tags": ["BookStore"],
+                "description": "Register Admin in Book Store",
+                "parameters": [
+                    {
+                        "name": "Register",
+                        "in": "body",
+                        "description": "Admin Registration",
+                        "schema": { 
+                            "$ref": "#/definitions/registerUser"
+                        }
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                    "201": {
+                        "description": "New user is Registered"
+                    },
+                    "409": {
+                        "description": "User already exist"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+
+        "/userRegistration": {
+            "post": {
+                "tags": ["BookStore"],
+                "description": "Register Admin in Book Store",
+                "parameters": [
+                    {
+                        "name": "Register",
+                        "in": "body",
+                        "description": "Admin Registration",
+                        "schema": { 
+                            "$ref": "#/definitions/registerUser"
+                        }
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                    "201": {
+                        "description": "New user is Registered"
+                    },
+                    "409": {
+                        "description": "User already exist"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": ["Login"],
+                "description": "Login user",
+                "parameters": [
+                    {
+                        "name": "Login",
+                        "in": "body",
+                        "description": "User that we want to login",
+                        "schema": {
+                            "$ref": "#/definitions/loginUser"
+                        }
+                    }
+                ],
+
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "registerUser": {
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role":{
+                    "type":"string"
+                }
+                
+            }
+        },
+        "loginUser": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
