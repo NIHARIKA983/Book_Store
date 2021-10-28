@@ -70,3 +70,26 @@ describe('admin registartion', () => {
         });
     });
 });
+
+describe('login', () => {
+  it('givenLoginDetails_whenProper_shouldAbleToLogin', (done) => {
+    chai
+      .request(server)
+      .post('/login')
+      .send(registrationData.user.login)
+      .end((err, res) => {
+        res.should.have.status(200);
+        done();
+      });
+  });
+  it('givenUserLoginDetails_whenImproper_shouldUnableToLogin', (done) => {
+    chai
+      .request(server)
+      .post('/login')
+      .send(registrationData.user.loginWithImproperDetails)
+      .end((err, res) => {
+        res.should.have.status(400);
+      });
+      done();
+  });
+});

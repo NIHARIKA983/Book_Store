@@ -18,6 +18,14 @@
             "firstName": "Niharika",
             "email": "niharika123@gmail.com",
             "password": "niharika123#"
+        },
+        "login": {
+            "email": "drakshayani12@gmail.com",
+            "password": "drakshayani12$&"
+        },
+        "loginWithImproperDetails": {
+            "email": "niharika123@gmail.com",
+            "password": "niharika12"
         }
     }
 }
