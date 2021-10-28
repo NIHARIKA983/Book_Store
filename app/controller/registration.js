@@ -6,6 +6,7 @@
 */
 const service = require('../service/registration');
 const helper = require('../utility/helper');
+const { logger } = require('../logger/logger');
 
 
 class Controller {
@@ -86,7 +87,55 @@ class Controller {
             data: null
           });
         }
-      };
+    };
+      
+    /**
+     * @description     : used when a user/admin forgot his/her password
+     * @param {httprequest} : req
+     * @param {httpresponse} : res
+     * @method          : forgotPasssword
+     * @file            : registration.js
+   */
+      forgotPassword = (req, res) => {
+        try {
+          const userCredential = {
+            email: req.body.email
+          };
+          const validationforgotPassword =
+          helper.authenticateLogin.validate(userCredential);
+  
+          if (validationforgotPassword.error) {
+            logger.error('Wrong Input Validations');
+            return res.status(400).send({
+              success: false,
+              message: 'Wrong Input Validations',
+              data: validationforgotPassword
+            });
+          }
+          service.forgotPassword(userCredential, (error, result) => {
+            if (error) {
+              return res.status(400).send({
+                success: false,
+                message: 'failed to send email',
+                error
+              });
+            } else {
+              return res.status(200).send({
+                success: true,
+                message: 'Email sent successfully',
+                result
+              });
+            }
+          });
+        } catch (error) {
+          logger.error('Internal server error');
+          return res.status(500).send({
+            success: false,
+            message: 'Internal server error',
+            result: null
+          });
+        }
+      }
 
 }
 

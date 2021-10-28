@@ -6,6 +6,8 @@
 const models = require('../models/registration');
 const bcrypt = require('bcrypt');
 const utilities = require('../utility/helper.js');
+const { logger } = require('../logger/logger');
+const nodemailer = require('../Utility/nodemailer.js');
 
 class Service {
   /**
@@ -42,6 +44,24 @@ class Service {
         });
       } else {
         return callback(error);
+      }
+    });
+  }
+  
+
+  /**
+   * @description         : it acts as a midlleware for models and controllers
+   * @param    {email}     : taking data from controller
+   * @param   {callback}  : giving result to controller
+   * @method              : forgotPassword from models
+  */
+  forgotPassword = (email, callback) => {
+    models.forgotPassword(email, (error, data) => {
+      if (error) {
+        logger.error(error);
+        return callback(error, null);
+      } else {
+        return callback(null, nodemailer.sendEmail(data));
       }
     });
   }

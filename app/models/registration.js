@@ -8,6 +8,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const utilities = require('../utility/helper.js');
+const { logger } = require('../logger/logger');
 
 const registrationSchema = mongoose.Schema({
   firstName: { type: String, required: true },
@@ -75,6 +76,21 @@ class Model {
       callback('Internal error', null);
     }
   }
+  
+  /**
+   * @description     : It uses to if a user forgot his/her password so send a mail
+   * @param           : data, callback
+  */
+  forgotPassword = (data, callback) => {
+    RegistrationModel.findOne({ email: data.email }, (err, data) => {
+      if (err) {
+        logger.error('User with email id doesnt exists');
+        return callback('User with email id doesnt exists', null);
+      } else {
+        return callback(null, data);
+      }
+    });
+  };
 }
 
 module.exports = new Model();

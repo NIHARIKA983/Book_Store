@@ -39,6 +39,12 @@ class Helper {
     .required()
  });
 
+ authenticateLogin = Joi.object({
+  email: Joi.string()
+    .pattern(new RegExp('^[a-z0-9.+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$'))
+    .required()
+  })
+
  setRole = (role) => {
     return (req, res, next) => {
         req.role = role;
