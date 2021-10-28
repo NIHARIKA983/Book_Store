@@ -1,8 +1,20 @@
+/**
+ * @description   : It is use to taking the request from the client and gives the response and
+ *                  validating whether the input is correct or not.
+ * @file          : registration.js
+ * @author        : Niharika K V
+*/
 const service = require('../service/registration');
 const helper = require('../utility/helper');
 
 
 class Controller {
+    /**
+    * @description   : register an user or admin in bookStore
+    * @param         : httpRequest and httpResponse
+    * @method        : validate it compares the authSchema properties and the data coming
+    *                  from the object and using services file method
+    */
     register = (req, res) => {
       try {
         const registrationDetails = {
@@ -41,7 +53,12 @@ class Controller {
         });
       }
     }
-
+    
+    /**
+   * @description   : login to bookstore
+   * @param         : httpRequest and httpResponse
+   * @method        : services file method for login having an object and callback
+   */
     login = (req, res) => {
         try {
           const userLoginInfo = {

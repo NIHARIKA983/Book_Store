@@ -1,3 +1,10 @@
+/**
+ * @description   : It is use to validate the inputs we are getting from client side using joi and
+ *                  also using Regular expression to follow the pattern properly.
+ * @package       : joi
+ * @file          : helper.js
+ * @author        : Niharika K V
+*/
 require('dotenv').config();
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
@@ -48,7 +55,13 @@ class Helper {
     }
   });
  };
+  
 
+ /**
+   * @description   : creating token using jsonwebtoken module
+   * @param {data} as data which comes from the body of postmen
+   * @module        : jwt
+  */
   token = (data) => {
    const dataForToken = {
      id: data._id,

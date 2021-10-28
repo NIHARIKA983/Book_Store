@@ -1,3 +1,10 @@
+/**
+ * @description   : It is use to create schema in data base and doing schema vlidation and
+ *                  encrypting password.
+ * @package       : mongoose, bcrypt
+ * @file          : registration.js
+ * @author        : Niharika K V
+*/
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const utilities = require('../utility/helper.js');
@@ -15,6 +22,11 @@ const registrationSchema = mongoose.Schema({
 const RegistrationModel = mongoose.model('Registration', registrationSchema);
 
 class Model {
+  /**
+   * @description     : It is use to create and save a new note in data base.
+   * @param           : data, callback
+   * @method          : save to save the coming data in data base
+  */
 
   register = (data, callback) => {
     const note = new RegistrationModel({
@@ -43,7 +55,11 @@ class Model {
       return callback('Internal error', null);
     }
   };
-
+  
+  /**
+   * @description     : It uses to login the registered user
+   * @param           : loginInfo, callback
+  */
   loginModel = (loginInfo, callback) => {
     try {
       RegistrationModel.findOne({ email: loginInfo.email }, (error, data) => {
