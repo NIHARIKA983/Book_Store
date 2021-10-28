@@ -26,6 +26,12 @@
         "loginWithImproperDetails": {
             "email": "niharika123@gmail.com",
             "password": "niharika12"
+        },
+        "forgotPasswordData": {
+            "email": "niharikagowda1996@gmail.com"
+        },
+        "forgotPasswordWithImproperDetails": {
+            "email": "pranupa1996@gmail.com"
         }
     }
 }

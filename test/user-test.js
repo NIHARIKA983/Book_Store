@@ -93,3 +93,26 @@ describe('login', () => {
       done();
   });
 });
+
+describe('forgotPassword', () => {
+  it('givenEmail_whenProper_shouldSendMail', (done) => {
+    chai
+      .request(server)
+      .post('/forgotPassword')
+      .send(registrationData.user.forgotPasswordData)
+      .end((err, res) => {
+        res.should.have.status(200);
+        done();
+      });
+  });
+  // it('givenEmail_whenImproper_shouldNotSendMail', (done) => {
+  //   chai
+  //     .request(server)
+  //     .post('/forgotPassword')
+  //     .send(registrationData.user.forgotPasswordWithImproperDetails)
+  //     .end((err, res) => {
+  //       res.should.have.status(400);
+  //     });
+  //   done();
+  // });
+});

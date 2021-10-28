@@ -79,6 +79,15 @@ class Helper {
    return jwt.sign({ dataForToken }, process.env.JWT_SECRET, { expiresIn: '24H' });
  }
 
+ getEmailFromToken = (token) => {
+  const data = jwt.verify(token, process.env.JWT_SECRET);
+  if (data) {
+    return data;
+  } else {
+    return 'couldnt verify';
+  }
+ }
+
  
 }
 
