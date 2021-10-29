@@ -32,8 +32,8 @@ class Helper {
 
    password: Joi.string()
     .required()
-    // .pattern(new RegExp('[A-Za-z0-9]{4,}[$&+,:;=?@#|<>.^*()%!-]{2,}')),
-    .pattern(new RegExp('(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$')),
+    .pattern(new RegExp('[A-Za-z0-9]{4,}[$&+,:;=?@#|<>.^*()%!-]{2,}')),
+    // .pattern(new RegExp('(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$')),
 
    role: Joi.string()
     .required()
@@ -86,7 +86,8 @@ class Helper {
      id: data._id,
      firstName: data.firstName,
      lastName: data.lastName,
-     email: data.email
+     email: data.email,
+     role: data.role
    };
    console.log(dataForToken);
    return jwt.sign({ dataForToken }, process.env.JWT_SECRET, { expiresIn: '24H' });
@@ -121,6 +122,19 @@ class Helper {
     }
   } catch (error) {
     return res.status(500).send({ success: false, message: 'Something went wrong!' });
+  }
+ }
+
+ verifyRole = (req, res, next)=>{
+   console.log(req.user)
+  if(req.user.dataForToken.role == "admin"){
+    next()
+  }
+  else{
+    return res.status(401).send({ 
+      success: false, 
+      message: 'Unauthentic user'
+    })
   }
 }
 

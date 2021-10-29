@@ -6,6 +6,7 @@
 const controller = require('../controller/registration');
 const helper = require('../utility/helper.js');
 const middleware = require('../utility/helper.js');
+const booksController = require('../controller/books');
 
 module.exports = (app) => {
      // api for userRegistration
@@ -18,4 +19,8 @@ module.exports = (app) => {
     app.post('/forgotPassword', controller.forgotPassword);
     // api for reset-password
     app.put('/reset-Password', middleware.validateToken, controller.resetPassword);
+
+    // Book CURD api
+    app.post('/books', middleware.validateToken,helper.verifyRole, booksController.addBook);
+    
 }  
