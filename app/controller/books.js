@@ -55,6 +55,40 @@ class BookController {
           success: false
         });
       }
+  }
+
+  /**
+   * @description : It is getting all existing books from bokkStore
+   * @param {httprequest} req
+   * @param {httpresponse} res
+   * @method       : getAllBooks 
+  */
+  getAllBooks = (req, res) => {
+    try {
+      service.getAllBooks(resolve, reject);
+      function resolve (data) {
+        logger.info('Get All Books successfully');
+        return res.status(201).json({
+          message: 'Get All Books successfully',
+          success: true,
+          data: data
+        });
+      }
+      function reject () {
+        logger.error('Failed to get all Books');
+        return res.status(400).json({
+          message: 'failed to get all Books',
+          success: false
+        });
+      }
+    } catch {
+      logger.error('Internal Error');
+      return res.status(500).json({
+        message: 'Internal Error'
+      });
     }
+  };
 }
+
+    
 module.exports = new BookController();

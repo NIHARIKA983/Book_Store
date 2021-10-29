@@ -22,5 +22,6 @@ module.exports = (app) => {
 
     // Book CURD api
     app.post('/books', middleware.validateToken,helper.verifyRole, booksController.addBook);
+    app.get('/books', middleware.validateToken, booksController.getAllBooks);
     
 }  
