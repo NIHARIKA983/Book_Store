@@ -91,6 +91,25 @@ class Model {
       }
     });
   };
+   
+  /**
+   * @description     : It uses to if a user wants to reset his/her password
+   * @param    {userData} : taking from service
+   * @param  {callback}: giving result back to service
+   * @method          : findOneAndUpdate to update password with new one
+  */
+  resetPassword = async (userData, callback) => {
+    const hashPass = bcrypt.hashSync(userData.password, 10);
+    const data = await RegistrationModel.findOne({ email: userData.email });
+    RegistrationModel.findByIdAndUpdate(data.id, { firstName: data.firstName, lastName: data.lastName, password: hashPass }, { new: true }, (error, data) => {
+      if (error) {
+        logger.error(error);
+        return callback(error, null);
+      } else {
+        return callback(null, data);
+      }
+    });
+  };
 }
 
 module.exports = new Model();

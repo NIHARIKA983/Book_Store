@@ -65,6 +65,25 @@ class Service {
       }
     });
   }
+  
+
+  /**
+   * @description         : it acts as a midlleware for models and controllers
+   * @param    {inputData}     : taking data from controller
+   * @param   {callback}  : giving result to controller
+   * @method              : resetPassword from models
+  */
+  resetPassword = (inputData, callback) => {
+    models.resetPassword(inputData, (error, data) => {
+      if (error) {
+        logger.error('password not update in model');
+        return callback(error, null);
+      } else {
+        logger.info('getting upadated password in data');
+        return callback(null, data);
+      }
+    });
+  }
 }
 
 module.exports = new Service();

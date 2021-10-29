@@ -136,6 +136,55 @@ class Controller {
           });
         }
       }
+      
+       /**
+     * @description     : used when a user forgot his/her password
+     * @param {httprequest} : req
+     * @param {httpresponse} : res
+     * @method          : resetPassword
+     * @package         : jwt
+     * @file            : registration.js
+     */
+      resetPassword = (req, res) => {
+        try {
+          const inputData = {
+            email: req.user.dataForToken.email,
+            password: req.body.password
+          };
+          const loginValidation = helper.resetSchema.validate(inputData);
+          if (loginValidation.error) {
+            logger.error('Invalid password');
+            res.status(422).send({
+              success: false,
+              message: 'Invalid password'
+            });
+            return;
+          }
+          service.resetPassword(inputData, (error, userData) => {
+            if (error) {
+              logger.error('Failed to reset password');
+              return res.status(400).send({
+                message: error,
+                success: false
+              });
+            } else {
+              logger.info('Password reset succesfully');
+              return res.status(200).json({
+                success: true,
+                message: 'Password reset succesfully',
+                data: userData
+              });
+            }
+          });
+        } catch (error) {
+          logger.error('Internal server error');
+          return res.status(500).send({
+            success: false,
+            message: 'Internal server error',
+            data: null
+          });
+        }
+      };
 
 }
 
