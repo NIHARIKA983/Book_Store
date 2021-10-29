@@ -56,5 +56,27 @@ class Model {
         .catch((err) => reject(err));
     });
   };
+
+  /**
+   * @description   : It updating the existing book for the perticular user
+   * @param {*} bookDetails
+   * @returns       : Promise
+  */
+
+  updateBook = (bookDetails) => {
+    return new Promise((resolve, reject) => {
+      BookModel.findByIdAndUpdate(
+        bookDetails.bookId,
+        { author: bookDetails.author,
+          title: bookDetails.title,
+          quantity: bookDetails.quantity,
+          price: bookDetails.price,
+          description: bookDetails.description },
+        { new: true }
+      )
+        .then((data) => resolve(data))
+        .catch((err) => reject(err));
+    });
+  };
 }
 module.exports = new Model();

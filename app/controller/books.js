@@ -88,6 +88,58 @@ class BookController {
       });
     }
   };
+
+
+  /**
+   * @description : It is updating an existing book in bookstore for particular user.
+   * @param {httprequest} req
+   * @param {httpresponse} res
+   * @method       : updatebook 
+  */
+
+  updateBook = (req, res) => {
+    try {
+      const bookDetails = {
+        author: req.body.author,
+        title: req.body.title,
+        quantity: req.body.quantity,
+        price: req.body.price,
+        description: req.body.description,
+        bookId: req.params.bookId
+      };
+      const validationResult = validation.updateBookProperty.validate(bookDetails);
+      if (validationResult.error) {
+        console.log(validationResult.error);
+        return res.status(400).send({
+          success: false,
+          message: 'Wrong Input Validations',
+          data: validationResult
+        });
+      }
+      service.updateBook(bookDetails, resolve, reject);
+      function resolve (data) {
+        logger.info('book Updated Successfully');
+        return res.status(201).send({
+          message: 'book Updated Successfully',
+          success: true,
+          data: data
+        });
+      }
+      function reject () {
+        logger.error('book Not Updated or bookId Is Not Match');
+        return res.status(400).json({
+          message: 'Note Not Updated or bookId Is Not Match',
+          success: false
+        });
+      }
+    } catch {
+      logger.error('Internal Server Error');
+      return res.status(500).json({
+        message: 'Internal server error',
+        success: false
+      });
+    }
+  };
 }
 
     

@@ -30,5 +30,18 @@ class Service {
         .then((data) => resolve(data))
         .catch(() => reject());
     };
+    
+
+    /**
+     * @description   : It is used to update an existing book taking data from controller
+     *                  and sending to models
+     * @param {bookDetails}  : it contains data which we are passing from body
+    */
+    updateBook = (bookDetails, resolve, reject) => {
+      bookModel
+        .updateBook(bookDetails)
+        .then((data) => resolve(data))
+        .catch(() => reject());
+    };
 }
 module.exports = new Service();

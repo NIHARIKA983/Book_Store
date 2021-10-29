@@ -89,7 +89,7 @@ class Helper {
      email: data.email,
      role: data.role
    };
-   console.log(dataForToken);
+   //  console.log(dataForToken);
    return jwt.sign({ dataForToken }, process.env.JWT_SECRET, { expiresIn: '24H' });
  }
 
