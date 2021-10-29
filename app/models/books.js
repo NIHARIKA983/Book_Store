@@ -78,5 +78,18 @@ class Model {
         .catch((err) => reject(err));
     });
   };
+
+  /**
+   * @description   : It delete the existing book from the db
+   * @param {*} bookDetails
+  */
+
+  deleteBook = async (bookDetails) => {
+    try {
+      return await BookModel.findByIdAndRemove(bookDetails);
+    } catch (err) {
+      return err;
+    }
+  }
 }
 module.exports = new Model();

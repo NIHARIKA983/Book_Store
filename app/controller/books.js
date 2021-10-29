@@ -140,6 +140,35 @@ class BookController {
       });
     }
   };
+
+  /**
+   * @description : It is deleting an existing book from book store
+   * @param {httprequest} req
+   * @param {httpresponse} res
+   * @method       : deleteBook 
+  */
+  deleteBook = async (req, res) => {
+    try {
+      const data = await service.deleteBook(req.params.bookId);
+      if (data.message) {
+        return res.status(404).json({
+          message: 'book not found',
+          success: false
+        });
+      }
+      return res.status(200).json({
+        message: 'book Deleted succesfully',
+        success: true,
+        data: data
+      });
+    } catch (err) {
+      return res.status(500).json({
+        message: 'book not deleted',
+        success: false,
+        data: err
+      });
+    }
+  }
 }
 
     

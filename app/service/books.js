@@ -43,5 +43,19 @@ class Service {
         .then((data) => resolve(data))
         .catch(() => reject());
     };
+
+     /**
+     * @description   : It is used to delete an existing book taking data from controller
+     *                  and sending to models
+     * @param {bookDetails}  : it contains data which we are passing from body
+     */
+
+    deleteBook = async (bookDetails) => {
+      try {
+        return await bookModel.deleteBook(bookDetails);
+      } catch (err) {
+        return err;
+      }
+    }
 }
 module.exports = new Service();
