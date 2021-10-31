@@ -20,18 +20,25 @@
             "password": "niharika123#"
         },
         "login": {
-            "email": "drakshayani12@gmail.com",
-            "password": "drakshayani12$&"
+            "email": "sumithra12@gmail.com",
+            "password": "sumithra12$&"
         },
         "loginWithImproperDetails": {
-            "email": "niharika123@gmail.com",
-            "password": "niharika12"
+            "email": "vyman",
+            "password": "Vymango"
         },
         "forgotPasswordData": {
             "email": "niharikagowda1996@gmail.com"
         },
         "forgotPasswordWithImproperDetails": {
             "email": "pranupa1996@gmail.com"
+        },
+        "resetPassword": {
+            "password": "Niharika12$!"
+        },
+        "credentials": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhRm9yVG9rZW4iOnsiaWQiOiI2MTdhMDZkNDY1N2Y0Y2E4NzkxNTQzOTAiLCJmaXJzdE5hbWUiOiJOaWhhcmlrYSIsImxhc3ROYW1lIjoiS1YiLCJlbWFpbCI6Im5paGFyaWthZ293ZGExOTk2QGdtYWlsLmNvbSJ9LCJpYXQiOjE2MzU2MTQzOTMsImV4cCI6MTYzNTcwMDc5M30.iJWSSfvq0AkOQzfr-MswbFEd_96om9qvIOnKc1uPla4",
+            "wrongToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ind3dy5nYXV0YW05NzE5OTdAZ21haWwuY29tIiwi"
         }
     }
 }

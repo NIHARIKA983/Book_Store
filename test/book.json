@@ -1,0 +1,38 @@
+{
+    "book": {
+        "validToken": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhRm9yVG9rZW4iOnsiaWQiOiI2MTdlOTRlYmY5MGM3ZTA1Y2MwZWU3MzUiLCJmaXJzdE5hbWUiOiJWeW1hbiIsImxhc3ROYW1lIjoiSEwiLCJlbWFpbCI6InZ5bWFuMTIzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE2MzU2ODc1ODgsImV4cCI6MTYzNTc3Mzk4OH0.Q33wsRvYPBg2Ag0OMc_nIiTwQTUcSzae8vKjkYkcCbs",
+        "invalidToken": "bearer eyJhbGciOR5cCI6IkpXVCJ9.eyJkYXRhRm9yVG9rZW4iOnsiZW1haWwiOiJ2aXZlay5paXRkOTNAZ21haWwuY29tIn0sImlhdCI6MTYzMzU1NTAyOH0.wJqpcpyzvlQPT684BKIeup28MMdy8M37gRuWuU-RhTY",
+        "getbookWithValidToken": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhRm9yVG9rZW4iOnsiaWQiOiI2MTdlOTRlYmY5MGM3ZTA1Y2MwZWU3MzUiLCJmaXJzdE5hbWUiOiJWeW1hbiIsImxhc3ROYW1lIjoiSEwiLCJlbWFpbCI6InZ5bWFuMTIzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE2MzU2ODc1ODgsImV4cCI6MTYzNTc3Mzk4OH0.Q33wsRvYPBg2Ag0OMc_nIiTwQTUcSzae8vKjkYkcCbs",
+        "getbookWithInValidToken": "bearer eyJ.eyJkYXRhRm9yVG9rZW4iOnsiaWQiOiI2MTU1ZTU1NWRkNjk3MmFjZThhNmU1MDkiLCJmaXJzdE5hbWUiOiJHYW5lc2giLCJsYXN0TmFtZSI6Imd2IiwiZW1haWwiOiJnYW5lc2hnYXZoYWQ5QGdtYWlsLmNvbSJ9LCJpYXQiOjE2MzM3NTAzOTh9.6V3rC5r0Jhr34iuBCEUIggc_OkmqYk14znDeJA6DpHg"
+    },
+    "updateBook": {
+        "validData": {
+            "author": "Niharika",
+            "quantity": 100,
+            "price": 350, 
+            "title": "Agricluture ",
+            "description": "coffee areca nut pepper "
+        }
+    },
+    "notesDelPos": {
+        "isDeleted": true
+    },
+    "notesCreatePos": {
+        "title": "Notes testing",
+        "description": "generate notes "
+    },
+    "notesCreateNegTitle": {
+        "title": "",
+        "description": "sample note create"
+    },
+    "addLebel": {
+        "validToken": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhRm9yVG9rZW4iOnsiaWQiOiI2MTU4YWQ4OTMxYWM5ZDE3Y2ZlZmMzY2UiLCJmaXJzdE5hbWUiOiJOaWhhcmlrYSIsImxhc3ROYW1lIjoiR293ZGEiLCJlbWFpbCI6Im5paGFyaWthZ293ZGExOTk2QGdtYWlsLmNvbSJ9LCJpYXQiOjE2MzM4OTM3MzN9.NbIIonAsk_o0ptn6Id4TtKPVCVslJJFkDsns1KnDwWo"
+    },
+
+    "addLabelBodyData": {
+        "Id": "6169916b1e16505796bc66cf"
+    },
+    "deleteLabelBodyData": {
+        "labelId": "6169916b1e16505796bc66cf"
+    }
+}
