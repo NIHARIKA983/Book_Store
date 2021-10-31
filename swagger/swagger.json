@@ -124,6 +124,217 @@
                     }
                 }
             }
+        },
+
+        "/reset-Password": {
+            "put": {
+                "tags": [
+                    "reset password"
+                ],
+                "description": "Already registered ? Then reset password successfully !!",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "token for validation",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Reset Password",
+                        "in": "body",
+                        "description": "Reset Password with token",
+                        "schema": {
+                            "$ref": "#/definitions/resetPassword"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "reset password succesfully !!"
+                    },
+                    "400": {
+                        "description": "Incorrect Password for reset password"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/books": {
+            "post": {
+                "tags": [
+                    "Add Books"
+                ],
+                "description": "Add a book !!",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Token for vaidation",
+                        "schema": {
+                            "type": "string",
+                            "required": true
+                        }
+                    },
+                    {
+                        "name": "Add Book",
+                        "in": "body",
+                        "description": "Book body",
+                        "schema": {
+                            "$ref": "#/definitions/books"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "schema": {
+                    "$ref": "#/definitions/books"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Create note succesfully !!"
+                    },
+                    "400": {
+                        "description": "Please enter Valid Token"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/getbooks": {
+            "get": {
+                "tags": [
+                    "Get Books"
+                ],
+                "description": "Get a  book !!",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Token for vaidation",
+                        "schema": {
+                            "type": "string",
+                            "required": true
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "schema": {
+                    "$ref": "#/definitions/books"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Get note succesfully !!"
+                    },
+                    "401": {
+                        "description": "Please enter Valid Token"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/books/{id}": {
+            "put": {
+                "tags": [
+                    "update Books"
+                ],
+                "description": "update a book by ID for perticuler person id !!",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Token for vaidation",
+                        "schema": {
+                            "type": "string",
+                            "required": true
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id of book you want to update",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "body",
+                        "name": "note",
+                        "description": "Note body",
+                        "schema": {
+                            "$ref": "#/definitions/updatebooks"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "update book succesfully !!"
+                    },
+                    "401": {
+                        "description": "Please enter Valid Token"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/deletebooks/{id}": {
+            "delete": {
+                "tags": [
+                    "Delete Books"
+                ],
+                "description": "Delete a book by ID for perticuler person id !!",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Token for vaidation",
+                        "schema": {
+                            "type": "string",
+                            "required": true
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id of book you want to update",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Delete book succesfully !!"
+                    },
+                    "401": {
+                        "description": "Please enter Valid Token"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -165,6 +376,54 @@
                 "email": {
                     "type": "string"
                 }
+            }
+        },
+        "resetPassword": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "new password for user."
+                }
+            },
+            "example": {
+                "password": "cllwit@@"
+            }
+        },
+        "books": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "example": {
+                "author": "Write a author name...",
+                "quantity": "quantity of books",
+                "price": "price of the book",
+                "title": "Write a title here.....",
+                "description": "Write a description here....."
+            }
+        },
+        "updatebooks": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "example": {
+                "author": "Write a author name...",
+                "quantity": "quantity of books",
+                "price": "price of the book",
+                "title": "Write a title here.....",
+                "description": "Write a description here....."
             }
         }
     }

@@ -22,8 +22,8 @@ module.exports = (app) => {
 
     // Book CURD api
     app.post('/books', middleware.validateToken,helper.verifyRole, booksController.addBook);
-    app.get('/books', middleware.validateToken, booksController.getAllBooks);
+    app.get('/getbooks', middleware.validateToken, booksController.getAllBooks);
     app.put('/books/:bookId', middleware.validateToken,helper.verifyRole, booksController.updateBook);
-    app.delete('/books/:bookId', middleware.validateToken,helper.verifyRole,booksController.deleteBook);
+    app.delete('/deletebooks/:bookId', middleware.validateToken,helper.verifyRole,booksController.deleteBook);
 
 }  
