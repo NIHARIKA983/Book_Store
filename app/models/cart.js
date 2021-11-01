@@ -5,7 +5,7 @@ const cartSchema = mongoose.Schema({
     bookId: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BookModel' }],
     isPurchased: { type: Boolean, default: false },
 }, {
-    timestamps: true, versionKey: false,
+    timestamps: true
 });
 
 const CartModel = mongoose.model('Cart', cartSchema);

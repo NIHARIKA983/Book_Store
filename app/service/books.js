@@ -30,6 +30,19 @@ class Service {
         .then((data) => resolve(data))
         .catch(() => reject());
     };
+     
+    /**
+   * @description   : It is used to fetch an existing book taking data from controller
+   *                  and sending to models
+   * @param {id}  : it contains data which we are passing from body
+   */
+    getBook = async (id) => {
+      try {
+        return await bookModel.getBook(id);
+      } catch (err) {
+        return err;
+      }
+    }
     
 
     /**

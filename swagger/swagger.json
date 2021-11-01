@@ -335,6 +335,37 @@
                     }
                 }
             }
+        },
+        "/addToCart":{
+            "post":{
+              "tags":["Add Carts"],
+              "description":"Add book to cart in BookStore",
+              "parameters":[
+                {
+                  "in":"header",
+                  "name":"authorization",
+                  "description":"Token for validation",
+                  "schema":{
+                    "type":"string",
+                    "required":true
+                  }
+                },
+                {
+                    "in": "body",
+                    "name": "body",
+                    "description": "add book to cart",
+                    "schema": {
+                        "$ref": "#/definitions/Addtocart"
+                    }
+                }
+              ],
+              "produces":["application/json"],
+              "responses":{
+                "200":{"description":"book added to cart successfully"},
+                "500":{"description":"book not Found"},
+                "400":{"description":"failed to add book"}
+              }
+            }
         }
     },
     "definitions": {
@@ -424,6 +455,17 @@
                 "price": "price of the book",
                 "title": "Write a title here.....",
                 "description": "Write a description here....."
+            }
+        },
+        "Addtocart": {
+            "type": "object",
+            "properties": {
+                "BookId": {
+                  "type": "string"
+                }
+            },
+            "example": {
+                "BookId": "Write a BookId here....."
             }
         }
     }

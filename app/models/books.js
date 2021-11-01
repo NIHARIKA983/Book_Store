@@ -56,6 +56,18 @@ class Model {
         .catch((err) => reject(err));
     });
   };
+  
+  /**
+   * @description   : It fetch the existing book from the db
+   * @param {*} id
+  */
+  getBook = async (id) => {
+    try {
+      return await BookModel.find({ $and: [{ _id: id.bookId }, { userId: id.userId }] });
+    } catch (err) {
+      return err;
+    }
+  }
 
   /**
    * @description   : It updating the existing book for the perticular user
