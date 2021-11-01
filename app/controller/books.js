@@ -6,6 +6,7 @@
 const service = require('../service/books');
 const { logger } = require('../logger/logger');
 const validation = require('../utility/bookValidation');
+const redisjs = require('../utility/redis');
 
 
 class BookController {
@@ -97,6 +98,7 @@ class BookController {
   */
   getBook = async (req, res) => {
     try {
+      const bookId = req.params.id;
       const id = { userId: req.user.dataForToken.id, bookId: req.params.id };
       const data = await service.getBook(id);
       if (data.message) {
@@ -105,6 +107,7 @@ class BookController {
           success: false
         });
       }
+      redisjs.setData(bookId, 60, JSON.stringify(data));
       return res.status(200).json({
         message: 'Book retrieved succesfully',
         success: true,
@@ -130,6 +133,7 @@ class BookController {
 
   updateBook = (req, res) => {
     try {
+      const bookId = req.params.id;
       const bookDetails = {
         author: req.body.author,
         title: req.body.title,
@@ -149,6 +153,7 @@ class BookController {
       }
       service.updateBook(bookDetails, resolve, reject);
       function resolve (data) {
+        redisjs.clearCache(bookId);
         logger.info('book Updated Successfully');
         return res.status(201).send({
           message: 'book Updated Successfully',
