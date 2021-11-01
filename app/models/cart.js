@@ -16,16 +16,23 @@ class CartModels {
      * @description   : It adds book into the cart
      * @param {*} data
      */
-    addToCart = (data) => {
-        return new Promise((resolve, reject) => {
+    
+    addToCart = async (data, callback) => {
+      const user = await CartModel.findOne({ userId: data.userId });
+      if (!user) {
           const cartDetails = new CartModel({
-            bookId: data.bookId,
-            userId: data.userId,
+              bookId: data.bookId,
+              userId: data.userId,
           });
-          cartDetails.save().then((data) => resolve(data))
-            .catch((error) => reject(error));
-        });
-    }
+          cartDetails.save()
+          callback(null, 'book added to cart')
+      } else {
+          const result = await CartModel.findOneAndUpdate({ userId: data.userId },
+              { $addToSet: { bookId: data.bookId } });
+          callback(null, result);
+
+      }
+  }
 }
 
 module.exports = new CartModels();

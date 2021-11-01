@@ -7,10 +7,12 @@ class Service {
 *                  and sending to models
 * @param {book}  : it contains data which we are passing from body
 */
-addToCart = (book, resolve, reject) => {
-  models.addToCart(book)
-    .then((data) => resolve(data))
-    .catch(() => reject());
+addToCart = async (id) => {
+  try {
+    return await models.addToCart(id);
+  } catch (err) {
+    return err;
+  }
 }
 }
 
