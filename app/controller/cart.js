@@ -1,5 +1,5 @@
 const services = require('../service/cart')
-const { logger } = require('../logger/logger');
+// const { logger } = require('../logger/logger');
 
 class CartController {
 
@@ -9,33 +9,35 @@ class CartController {
        * @param {httpresponse} res
        * @method       : addToCart 
       */
-    addToCart = async (req, res) => {
-    try {
-      const id = {
-        bookId: req.body.bookId,
-        userId: req.userId
-      };
-      const data = await services.addToCart(id);
-      if (!data.message) {
-        return res.status(404).json({
-          message: 'book was unable to add in cart',
-          success: false
-        });
+     addToCart = (req, res) =>{
+      try{
+          const userInfo = {
+              userId:req.user.dataForToken.id,
+              itemId: req.params.id,
+              qty: req.body.qty
+          }
+          services.addToCart(userInfo, (err, data)=>{
+              if(err){
+                  return res.status(400).json({
+                      message: err,
+                      success: false
+                  })
+              }
+              return res.status(201).json({
+                  message: "Item added successfully",
+                  success: true,
+                  data: data
+              })
+          })
       }
-      return res.status(200).json({
-        message: 'book is added to cart successfully',
-        success: true,
-        data: id
-
-      });
-    } catch (err) {
-      return res.status(500).json({
-        message: 'Internal Error',
-        success: false,
-        data: err
-      });
-    }
+      catch(error){
+          return res.status(500).json({
+              message: "Internal server error",
+              success: false
+          })
+      }
   }
+  
 }
 
 module.exports = new CartController();

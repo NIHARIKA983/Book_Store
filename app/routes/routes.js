@@ -30,7 +30,7 @@ module.exports = (app) => {
     app.delete('/deletebooks/:bookId', middleware.validateToken,helper.verifyRole,booksController.deleteBook);
     
     // Add Book to cart
-    app.post('/addToCart', middleware.validateToken, cartController.addToCart);
+    app.post('/addToCart/:id', middleware.validateToken, cartController.addToCart);
 
 
 }  
