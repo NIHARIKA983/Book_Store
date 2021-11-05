@@ -121,6 +121,20 @@ class CartModels {
                 .catch((err) => reject(err));
         });
     }
+    
+
+    /**
+    * @description   : It changes the isPurchased to true in cart
+    * @param {*} data
+    * @returns       : Promise
+   */
+    placeOrder = (data) => {
+        return new Promise((resolve, reject) => {
+            CartModel.findByIdAndUpdate(data.cartId, { userId: data.userId , isPurchased: data.isPurchased },{ new: true })
+                .then((cart) => resolve(cart))
+                .catch((err) => reject(err));
+        });
+    }
 }
 
 module.exports = new CartModels();
