@@ -37,6 +37,36 @@ class CartController {
           })
       }
   }
+
+  /**
+   * @description : It is getting all existing carts from bookStore
+   * @param {httprequest} req
+   * @param {httpresponse} res
+   * @method       : getAllCarts 
+  */
+  getAllCarts = (req, res) => {
+    try {
+      services.getAllCarts(req).then((carts) => {
+        res.status(200).send({
+          success: true,
+          message: 'fetched all carts successfully',
+          carts,
+        });
+      }).catch((err) => {
+        res.status(400).send({
+          success: false,
+          message: 'unable to fetch carts',
+          err,
+        });
+      });
+    } catch (err) {
+      res.status(500).send({
+        success: false,
+        message: 'Internal server error',
+      });
+    }
+  }
+
   
 }
 

@@ -31,6 +31,7 @@ module.exports = (app) => {
     
     // Add Book to cart
     app.post('/addToCart/:id', middleware.validateToken, cartController.addToCart);
+    app.get('/carts', middleware.validateToken, cartController.getAllCarts);
 
 
 }  

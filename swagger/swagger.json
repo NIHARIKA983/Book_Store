@@ -380,35 +380,49 @@
                 }
             }
         },
-        "/addToCart":{
-            "post":{
-              "tags":["Add Carts"],
-              "description":"Add book to cart in BookStore",
-              "parameters":[
-                {
-                  "in":"header",
-                  "name":"authorization",
-                  "description":"Token for validation",
-                  "schema":{
-                    "type":"string",
-                    "required":true
-                  }
-                },
-                {
-                    "in": "body",
-                    "name": "body",
-                    "description": "add book to cart",
-                    "schema": {
-                        "$ref": "#/definitions/Addtocart"
+        "/addToCart/{id}": {
+            "post": {
+                "tags": ["Add To Cart"],
+                
+                "description": "Add a book to the cart",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Enter token recieved in login",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Enter id of the book",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Add Bok to the cart",
+                        "in": "body",
+                        "description": "Add to Cart",
+                        "schema": { 
+                            "$ref": "#/definitions/addToCart"
+                        }
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                    "201": {
+                        "description": "ok"
+                    },
+                    "401":{
+                        "description": "Unauthorized token"
+                    },
+                    "400": {
+                        "description": "Error"
                     }
                 }
-              ],
-              "produces":["application/json"],
-              "responses":{
-                "200":{"description":"book added to cart successfully"},
-                "500":{"description":"book not Found"},
-                "400":{"description":"failed to add book"}
-              }
             }
         }
     },
@@ -501,15 +515,12 @@
                 "description": "Write a description here....."
             }
         },
-        "Addtocart": {
+        "addToCart": {
             "type": "object",
             "properties": {
-                "BookId": {
-                  "type": "string"
+                "qty": {
+                    "type": "number"
                 }
-            },
-            "example": {
-                "BookId": "Write a BookId here....."
             }
         }
     }

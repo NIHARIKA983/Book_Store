@@ -96,6 +96,18 @@ class CartModels {
         })
         
     }
+
+    /**
+       * @description     : getting all carts from the bookStoreApp
+       * @returns         : Promise
+      */
+    getAllCarts = () => {
+        return new Promise((resolve, reject) => {
+            CartModel.find()
+                .then((books) => resolve(books))
+                .catch((err) => reject(err));
+        });
+    }
 }
 
 module.exports = new CartModels();
