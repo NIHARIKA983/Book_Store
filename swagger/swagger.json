@@ -424,6 +424,28 @@
                     }
                 }
             }
+        },
+        "/carts":{
+            "get":{
+              "tags":["get carts"],
+              "description":"Gets all carts",
+              "parameters":[
+                {
+                  "in":"header",
+                "name":"authorization",
+                "description":"Token for validation",
+                "schema":{
+                  "type":"string",
+                  "required":true
+                }
+                }
+              ],
+              "produces":["application/json"],
+              "responses":{
+                "200":{"description":"carts retrieved"},
+                "500":{"description":"Couldnt retrieve carts"}
+              }
+            }
         }
     },
     "definitions": {
