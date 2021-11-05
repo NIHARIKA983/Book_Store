@@ -66,6 +66,39 @@ class CartController {
       });
     }
   }
+  
+
+  /**
+   * @description : It is getting a existing cart from bookStore
+   * @param {httprequest} req
+   * @param {httpresponse} res
+   * @method       : getCart 
+  */
+  getCart = (req, res) => {
+    try {
+      const data = {
+        userId: req.params.userId
+      }
+      services.getCart(data).then((carts) => {
+        res.status(200).send({
+          success: true,
+          message: 'fetched cart successfully',
+          carts,
+        });
+      }).catch((err) => {
+        res.status(400).send({
+          success: false,
+          message: 'unable to fetch cart',
+          err,
+        });
+      });
+    } catch (err) {
+      res.status(500).send({
+        success: false,
+        message: 'Internal server error',
+      });
+    }
+  }
 
   
 }

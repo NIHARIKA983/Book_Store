@@ -29,9 +29,10 @@ module.exports = (app) => {
     app.put('/books/:bookId', middleware.validateToken,helper.verifyRole, booksController.updateBook);
     app.delete('/deletebooks/:bookId', middleware.validateToken,helper.verifyRole,booksController.deleteBook);
     
-    // Add Book to cart
+    // Cart CURD api
     app.post('/addToCart/:id', middleware.validateToken, cartController.addToCart);
     app.get('/carts', middleware.validateToken, cartController.getAllCarts);
+    app.get('/cart/:userId', middleware.validateToken, cartController.getCart);
 
 
 }  
