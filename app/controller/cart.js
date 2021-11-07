@@ -38,6 +38,32 @@ class CartController {
       }
   }
 
+  removeBookFromCart = (req, res) => {
+    try {
+      const data = {
+        bookId: req.body.bookId,
+        userId: req.params.userId
+      };
+      services.removeBookFromCart(data).then(() => {
+        res.status(200).send({
+          success: true,
+          message: 'book removed from cart successfully',
+        });
+      }).catch((err) => {
+        res.status(400).send({
+          success: false,
+          message: 'book was unable to remove from cart',
+          err,
+        });
+      });
+    } catch (err) {
+      res.status(500).send({
+        success: false,
+        message: 'Internal server error',
+      });
+    }
+  }
+
   /**
    * @description : It is getting all existing carts from bookStore
    * @param {httprequest} req

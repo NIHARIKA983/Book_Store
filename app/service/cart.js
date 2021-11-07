@@ -18,6 +18,14 @@ addToCart = (userInfo, callback) =>{
   })
 }
 
+removeBookFromCart = (data) => {
+  return new Promise((resolve, reject) => {
+    const result = models.removeBookFromCart(data);
+    result.then((book) => resolve({ book }))
+      .catch((err) => reject({ err }));
+  });
+}
+
 /**
 * @description   : It is used to get all carts from bookStore
 *                  taking data from controller and sending to models

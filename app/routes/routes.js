@@ -31,6 +31,7 @@ module.exports = (app) => {
     
     // Cart CURD api
     app.post('/addToCart/:id', middleware.validateToken, cartController.addToCart);
+    app.delete('/removeBookFromCart/:id', middleware.validateToken, cartController.removeBookFromCart);
     app.get('/carts', middleware.validateToken, cartController.getAllCarts);
     app.get('/cart/:userId', middleware.validateToken, cartController.getCart);
     app.put('/placeOrder/:cartId', middleware.validateToken, cartController.placeOrder);

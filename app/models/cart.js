@@ -97,6 +97,14 @@ class CartModels {
         
     }
 
+    removeBookFromCart = (data) => {
+        return new Promise((resolve, reject) => {
+            CartModel.findOneAndDelete({ userId: data.userId }, { $pull: { bookId: data.bookId } })
+                .then((book) => resolve(book))
+                .catch((err) => reject(err));
+        });
+    }
+
     /**
        * @description     : getting all carts from the bookStoreApp
        * @returns         : Promise
