@@ -478,6 +478,44 @@
                 "400":{"description":"Invalid Token"}
               }
             }
+        },
+        "/placeOrder/{id}":{
+            "put":{
+              "tags":["Update Order"],
+              "description":"PlaceOder",
+              "parameters":[
+                {
+                  "in":"header",
+                  "name":"authorization",
+                  "description":"Token for validation",
+                  "schema":{
+                    "type":"string",
+                    "required":true
+                }
+              },
+              {
+                "in":"path",
+                "name":"id",
+                "description":"cart id",
+                "schema":{
+                  "type":"string",
+                  "required":true
+                }
+              },
+              {
+                "in":"body",
+                "name":"cart",
+                "description":"PlaceOrder",
+                  "schema":{"$ref":"#/definitions/cart"}
+                }
+              ],
+              "produces":["application/json"],
+              "responses":{
+                "200":{"description":"cart updated"},
+                "500":{"description":"Failed to update cart"},
+                "400":{"description":"Invalid Token"}
+              }
+            }
         }
     },
     "definitions": {
@@ -575,6 +613,14 @@
                 "qty": {
                     "type": "number"
                 }
+            }
+        },
+        "cart":{
+            "type":"object",
+            "properties":{
+              "isPurchased":{
+                "type":"string"
+              }
             }
         }
     }
