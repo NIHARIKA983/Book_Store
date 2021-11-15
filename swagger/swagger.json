@@ -425,6 +425,41 @@
                 }
             }
         },
+        "/removeBookFromCart/{id}":{
+            "delete":{
+              "tags":["Delete Book"],
+              "description":"Deletes a Book",
+              "parameters":[{
+                "in":"header",
+                  "name":"authorization",
+                  "description":"Token for validation",
+                  "schema":{
+                    "type":"string",
+                    "required":true
+                }
+              },{
+                "in":"path",
+                "name":"id",
+                "description":"User id",
+                "schema":{
+                  "type":"string",
+                  "required":true
+                }
+              },
+              {
+                "in":"body",
+                "name":"cart",
+                "description":"delete bookfromCart",
+                  "schema":{"$ref":"#/definitions/removebook"}
+                }],
+              "produces":["application/json"],
+              "responses":{
+                "200":{"description":"Deleted book"},
+                "500":{"description":"Failed to delete book"},
+                "400":{"description":"Invalid Token"}
+              }
+            }    
+        },
         "/carts":{
             "get":{
               "tags":["get carts"],
@@ -619,6 +654,14 @@
             "type":"object",
             "properties":{
               "isPurchased":{
+                "type":"string"
+              }
+            }
+        },
+        "removebook":{
+            "type":"object",
+            "properties":{
+              "bookId":{
                 "type":"string"
               }
             }

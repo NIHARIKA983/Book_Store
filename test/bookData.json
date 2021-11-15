@@ -1,0 +1,18 @@
+{
+    "book": {
+        "validBook": {
+            "title": "Test Book",
+            "description": "Book on financial awareness",
+            "price": 300,
+            "author": "Robert Kiyosaki"
+        },
+        "updatedBook": {
+            "title": "Rich Dad",
+            "description": "Book on financial awareness",
+            "price": 300,
+            "author": "Robert Kiyosaki"
+        }
+    },
+    "validToken": "Beraer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhRm9yVG9rZW4iOnsiaWQiOiI2MTg1ZTdiMDg0YjIwNTY2MTU4MTgzZTEiLCJmaXJzdE5hbWUiOiJBcnBpdGhhIiwibGFzdE5hbWUiOiJZTiIsImVtYWlsIjoiYXJ0aHBhaG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTYzNjg5NzMxN30.Idg2sDzbTynHwhoZ1439RFX9CWTvDjDriXLbrQhZI2o",
+    "invalidToken": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJZYXNoIiwibGFzdE5hbWUiOiJQdXJ3YXIiLCJlbWFpbCI6Inlhc2hwdXJ3YXIueWFzaHB1cndhckBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpZCI6IjYxN2E3Yjc0MDdjN2UxNGI5ZDU3MTYzZCIsImlhdCI6"
+}

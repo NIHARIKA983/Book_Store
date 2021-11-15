@@ -51,17 +51,17 @@ describe('create book api', () => {
 
 // get book test cases
 describe('get book api', () => {
-  // it('book', (done) => {
-  //   const token = bookDB.book.getbookWithValidToken;
-  //   chai
-  //     .request(server)
-  //     .get('/getbooks')
-  //     .set({ authorization: token })
-  //     .end((err, res) => {
-  //       res.should.have.status(201);
-  //       done();
-  //     });
-  // });
+  it('book', (done) => {
+    const token = bookDB.book.getbookWithValidToken;
+    chai
+      .request(server)
+      .get('/getbooks')
+      .set({ authorization: token })
+      .end((err, res) => {
+        res.should.have.status(201);
+        done();
+      });
+  });
 
   it('givenCreateBook_whenInvalidToken_shouldNotbeGet', (done) => {
     const token = bookDB.book.getbookWithInValidToken;
@@ -78,19 +78,19 @@ describe('get book api', () => {
 
 // update book test cases
 describe('Update boook api', () => {
-  // it('givenPoperDetails_ShouldUpdateBook', (done) => {
-  //   const token = bookDB.book.getbookWithValidToken;
-  //   const note = bookDB.updateBook.validData;
-  //   chai
-  //     .request(server)
-  //     .put('/books/617c028deae0a5346d939e65')
-  //     .set({ authorization: token })
-  //     .send(note)
-  //     .end((err, res) => {
-  //       res.should.have.status(201);
-  //       done();
-  //     });
-  // });
+  it('givenPoperDetails_ShouldUpdateBook', (done) => {
+    const token = bookDB.book.getbookWithValidToken;
+    const note = bookDB.updateBook.validData;
+    chai
+      .request(server)
+      .put('/books/617c028deae0a5346d939e65')
+      .set({ authorization: token })
+      .send(note)
+      .end((err, res) => {
+        res.should.have.status(201);
+        done();
+      });
+  });
 
   it('givenInvalidToken_ShouldNotUpdateNote', (done) => {
     const token = bookDB.book.getbookWithInValidToken;
@@ -109,17 +109,17 @@ describe('Update boook api', () => {
 
 // delete book test cases
 describe('delete book api', () => {
-  // it('givenImPoperDetails_ShouldNotDeleteBook', (done) => {
-  //   const token = bookDB.book.getbookWithValidToken;
-  //   chai
-  //     .request(server)
-  //     .delete('/deletebooks/617cb0692bb75e7474aaf682')
-  //     .set({ authorization: token })
-  //     .end((err, res) => {
-  //       res.should.have.status(500);
-  //       done();
-  //     });
-  // });
+  it('givenImPoperDetails_ShouldNotDeleteBook', (done) => {
+    const token = bookDB.book.getbookWithValidToken;
+    chai
+      .request(server)
+      .delete('/deletebooks/617cb0692bb75e7474aaf682')
+      .set({ authorization: token })
+      .end((err, res) => {
+        res.should.have.status(500);
+        done();
+      });
+  });
 
   it('givenInvalidToken_ShouldNotDeleteBook', (done) => {
     const token = bookDB.book.getbookWithInValidToken;
