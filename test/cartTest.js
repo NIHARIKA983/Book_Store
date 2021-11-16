@@ -90,3 +90,55 @@ describe('placeOrder api', () => {
           });
       });
 });
+
+describe('get  AllCarts', () => {
+  it('cart', (done) => {
+    const token = data.validToken;
+    chai
+      .request(server)
+      .get('/carts')
+      .set({ authorization: token })
+      .end((err, res) => {
+        res.should.have.status(200);
+        done();
+      });
+  });
+
+  it('getAllCarts_whenInvalidToken_shouldNotbeGet', (done) => {
+    const token = data.invalidToken;
+    chai
+      .request(server)
+      .get('/carts')
+      .set({ authorization: token })
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+  });
+});
+
+describe('Get cart by ID api', () => {
+  it('givenPoperDetails_ShouldGetcart', (done) => {
+    const token = data.validToken;
+    chai
+      .request(server)
+      .get('/cart/61851735e91d4e1244f4aed3')
+      .set({ authorization: token })
+      .end((err, res) => {
+        res.should.have.status(200);
+        done();
+      });
+  });
+
+  it('givenImpoperToken_ShouldNotGetcart', (done) => {
+    const token = data.invalidToken;
+    chai
+      .request(server)
+      .get('/cart/61851735e91d4e1244f4aed3')
+      .set({ authorization: token })
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+  });
+});

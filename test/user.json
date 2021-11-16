@@ -31,13 +31,13 @@
             "email": "niharikagowda1996@gmail.com"
         },
         "forgotPasswordWithImproperDetails": {
-            "email": "pranupa1996@gmail.com"
+            "email": "pra"
         },
         "resetPassword": {
             "password": "Niharika12$!"
         },
         "credentials": {
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhRm9yVG9rZW4iOnsiaWQiOiI2MTg1ZTdiMDg0YjIwNTY2MTU4MTgzZTEiLCJmaXJzdE5hbWUiOiJBcnBpdGhhIiwibGFzdE5hbWUiOiJZTiIsImVtYWlsIjoiYXJ0aHBhaG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTYzNjg5NzMxN30.Idg2sDzbTynHwhoZ1439RFX9CWTvDjDriXLbrQhZI2o",
+            "token": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhRm9yVG9rZW4iOnsiaWQiOiI2MTg1ZTdiMDg0YjIwNTY2MTU4MTgzZTEiLCJmaXJzdE5hbWUiOiJBcnBpdGhhIiwibGFzdE5hbWUiOiJZTiIsImVtYWlsIjoiYXJ0aHBhaG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIn0sImlhdCI6MTYzNjg5NzMxN30.Idg2sDzbTynHwhoZ1439RFX9CWTvDjDriXLbrQhZI2o",
             "wrongToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ind3dy5nYXV0YW05NzE5OTdAZ21haWwuY29tIiwi"
         }
     }

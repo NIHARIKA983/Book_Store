@@ -133,3 +133,29 @@ describe('delete book api', () => {
       });
   });
 });
+
+describe('Get book by ID api', () => {
+  it('givenPoperDetails_ShouldGetbook', (done) => {
+    const token = bookDB.book.getbookWithValidToken;
+    chai
+      .request(server)
+      .get('/getbooks/617c0466eae0a5346d939e6b')
+      .set({ authorization: token })
+      .end((err, res) => {
+        res.should.have.status(200);
+        done();
+      });
+  });
+
+  it('givenImpoperToken_ShouldNotGetbook', (done) => {
+    const token = bookDB.book.getbookWithInValidToken;
+    chai
+      .request(server)
+      .get('/getbooks/617c0466eae0a5346d939e6b')
+      .set({ authorization: token })
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+  });
+});

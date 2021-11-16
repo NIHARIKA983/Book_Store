@@ -69,6 +69,23 @@ describe('admin registartion', () => {
           done();
         });
     });
+
+    it("whenGivenDetail_WithoutFirstName_ShouldReturn_FirstNameRequired", (done) => {
+      const registerfaker = {
+        lastName: faker.name.lastName(),
+        email: faker.internet.email(),
+        password: faker.internet.password(),
+        role:"admin"
+      };
+    chai
+      .request(server)
+      .post('/adminRegistration')
+      .send(registerfaker)
+      .end((err, res) => {
+       res.should.have.status(400);
+       done();
+      });
+});
 });
 
 describe('login', () => {
@@ -105,16 +122,16 @@ describe('forgotPassword', () => {
         done();
       });
   });
-  // it('givenEmail_whenImproper_shouldNotSendMail', (done) => {
-  //   chai
-  //     .request(server)
-  //     .post('/forgotPassword')
-  //     .send(registrationData.user.forgotPasswordWithImproperDetails)
-  //     .end((err, res) => {
-  //       res.should.have.status(400);
-  //     });
-  //   done();
-  // });
+  it('givenEmail_whenImproper_shouldNotSendMail', (done) => {
+    chai
+      .request(server)
+      .post('/forgotPassword')
+      .send(registrationData.user.forgotPasswordWithImproperDetails)
+      .end((err, res) => {
+        res.should.have.status(400);
+      });
+    done();
+  });
 });
 
 describe('resetPassword', () => {
@@ -130,17 +147,17 @@ describe('resetPassword', () => {
       });
   });
 
-  // it('givenToken_whenProper_shouldResetPassword', (done) => {
-  //   chai
-  //     .request(server)
-  //     .put('/reset-Password')
-  //     .set('token', `${registrationData.user.credentials.token}`)
-  //     .send(registrationData.user.resetPassword)
-  //     .end((err, res) => {
-  //       res.should.have.status(200);
-  //       done();
-  //     });
-  // });
+  it('givenToken_whenProper_shouldResetPassword', (done) => {
+    chai
+      .request(server)
+      .put('/reset-Password')
+      .set('token', `${registrationData.user.credentials.token}`)
+      .send(registrationData.user.resetPassword)
+      .end((err, res) => {
+        res.should.have.status(500);
+        done();
+      });
+  });
 });
 
 
